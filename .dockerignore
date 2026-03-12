@@ -1,0 +1,22 @@
+target/
+!.gitkeep
+
+# Maven
+*.log
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test
+src/test/

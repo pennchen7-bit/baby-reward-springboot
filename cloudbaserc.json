@@ -1,0 +1,38 @@
+{
+  "version": "2.0",
+  "envId": "baby-reward-prod",
+  "region": "ap-guangzhou",
+  "services": [
+    {
+      "name": "baby-reward-springboot",
+      "path": ".",
+      "dockerfile": "Dockerfile",
+      "memorySize": 512,
+      "cpu": 0.5,
+      "minNum": 0,
+      "maxNum": 5,
+      "port": 8080,
+      "envVariables": {
+        "SPRING_PROFILES_ACTIVE": "prod",
+        "SERVER_PORT": "8080",
+        "DB_HOST": "10.17.103.12",
+        "DB_PORT": "3306",
+        "DB_NAME": "baby_reward",
+        "DB_USER": "root",
+        "DB_PASSWORD": "P@ssword123"
+      },
+      "volume": [],
+      "policy": [
+        {
+          "type": "Default",
+          "enable": true
+        }
+      ],
+      "network": {
+        "vpc": "default",
+        "subnet": "default",
+        "publicAccess": true
+      }
+    }
+  ]
+}

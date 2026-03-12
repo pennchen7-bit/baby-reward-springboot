@@ -1,0 +1,36 @@
+#!/usr/bin/expect -f
+
+set timeout 600
+log_user 1
+
+cd /Users/clovey-macmini/.openclaw/workspace/code/baby-reward-springboot
+
+spawn wxcloud run:deploy . -e prod-1gqcesdhf5274b35 -s baby-reward-api --containerPort 8080 --envParams "SPRING_PROFILES_ACTIVE=prod&DB_HOST=10.17.103.12&DB_PORT=3306&DB_NAME=baby_reward&DB_USER=root&DB_PASSWORD=P@ssword123" --remark "Spring Boot"
+
+expect {
+    "请选择部署方式" {
+        send " "
+        send "\r"
+        exp_continue
+    }
+    "请选择发布类型" {
+        send " "
+        send "\r"
+        exp_continue
+    }
+    "请输入工作目录" {
+        send "\r"
+        exp_continue
+    }
+    "请输入 Dockerfile 文件名" {
+        send "\r"
+        exp_continue
+    }
+    "确定发布？" {
+        send "yes\r"
+        exp_continue
+    }
+    eof
+}
+
+puts "\n部署完成！"

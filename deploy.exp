@@ -1,0 +1,27 @@
+#!/usr/bin/expect -f
+
+set timeout 600
+
+cd /Users/clovey-macmini/.openclaw/workspace/code/baby-reward-springboot
+
+spawn wxcloud run:deploy . -e prod-1gqcesdhf5274b35 -s baby-reward --containerPort 8080 --envParams "SPRING_PROFILES_ACTIVE=prod&DB_HOST=10.17.103.12&DB_PORT=3306&DB_NAME=baby_reward&DB_USER=root&DB_PASSWORD=P@ssword123" --remark "Spring Boot Auto Deploy"
+
+# 选择部署方式：镜像拉取（向下箭头选择第二个选项）
+expect "请选择部署方式"
+send "\033\[B"
+send "\r"
+
+# 选择镜像（第一个）
+expect "请选择镜像"
+send "\r"
+
+# 选择发布类型：全量发布
+expect "请选择发布类型"
+send "\r"
+
+# 确认发布：yes
+expect "确定发布"
+send "yes\r"
+
+# 等待部署完成
+expect eof
